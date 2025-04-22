@@ -1,0 +1,73 @@
+.App {
+  background-color: #FFFFFA;
+  font-style : sans-serif;
+  font-weight: bold;
+}
+
+.color-primary{
+  color : #FF7F51;
+}
+
+.color-secondary {
+  color : #5DA9E9;
+}
+
+.color--blue{
+  color : #72A1E5;
+}
+
+.color--black{
+  color : #40434E;
+}
+.color--white{
+  color : #FFFFFA;
+}
+
+.landing-page{
+  background-image: linear-gradient(rgba( 0,0,0,0.7), rgba(0, 0 ,0 ,0.7)), url('./images/apartment-bg.jpeg');
+  background-size: cover;
+  width: 100wh;
+  height: 110vh;
+  position : relative;
+}
+
+.dflex{
+  display : flex;
+}
+
+.ai-center{
+  align-items: center;
+}
+
+.ai-stretch{
+  align-items: stretch;
+}
+
+.jc-around{
+  justify-content: space-around;
+}
+
+.jc-between{
+  justify-content: space-between;
+}
+
+.w-100{
+  width : 100%;
+}
+
+.fwrap{
+  flex-wrap : wrap;
+}
+
+.tcenter{
+  text-align: center;
+}
+
+.h-line {
+  border-top: 1px solid black; /* Change the color to your desired color */
+  width: 95%; /* Adjust the width as needed */
+}
+
+.mb-4{
+  margin-bottom: 16px;
+}
