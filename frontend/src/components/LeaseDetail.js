@@ -93,8 +93,8 @@ function LeaseDetail() {
                     <p>Flat Number: {data.apartmentDetails.flatNumber}</p>
                     <p> Bedrooms : {data.apartmentDetails.bedrooms}, Bathrooms : {data.apartmentDetails.bathrooms}</p>
                     <p> Amenities : {data.apartmentDetails.amenities.join(",")}</p>
-                    <p>Lease Start Date: 10-20-2022</p>
-                    <p>Lease End Date: 10-20-2024</p>
+                    <p>Lease Start Date: 05/25/2025</p>
+                    <p>Lease End Date: 05-24-2026</p>
                     <div className="dflex">
                         <p>Current Lease Members:</p>
                     </div>

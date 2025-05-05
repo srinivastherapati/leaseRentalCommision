@@ -154,9 +154,13 @@ export const loginUser = async (email, password) => {
   }
 };
 
-export const fetchAvailableApartments = async () => {
+export const fetchAvailableApartments = async (availableFrom) => {
   try {
-    const response = await fetch(`${baseUrl}/api/getAvailableApartments`, {
+    const url = availableFrom 
+      ? `${baseUrl}/api/apartmentDetails?availableFrom=${availableFrom}` 
+      : `${baseUrl}/api/apartmentDetails`; // fixed backtick usage
+
+    const response = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -164,8 +168,8 @@ export const fetchAvailableApartments = async () => {
     });
 
     const data = await response.json();
+
     if (response.status === 200) {
-      console.log(data);
       return data;
     } else {
       return {
@@ -173,12 +177,14 @@ export const fetchAvailableApartments = async () => {
       };
     }
   } catch (error) {
-    // Handle network errors or other errors during the API call
     return {
       error: error.message,
     };
   }
 };
+
+
+
 
 export const fetchApartmentDetails = async (id) => {
   try {

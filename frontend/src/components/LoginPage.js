@@ -34,6 +34,10 @@ function LoginPage() {
   const [role, setRole] = React.useState('customer');
   const [dob, setDob] = React.useState('');
   const [address, setAddress] = React.useState('');
+  const [street, setStreet] = React.useState('');
+  const [city, setCity] = React.useState(''); 
+  const [state, setState] = React.useState('');
+  const [zipcode, setZipCode] = React.useState('');
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
@@ -67,7 +71,10 @@ function LoginPage() {
       password,
       role,
       phoneNumber: mobileNumber,
-      currentAddress: address,
+      city: city,
+      zipcode:zipcode,
+      state:state,
+      street:street
     };
   
     try {
@@ -181,9 +188,37 @@ function LoginPage() {
                 margin="normal"
                 required
                 fullWidth
-                label="Address"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
+                label="Street"
+                value={street}
+                onChange={(e) => setStreet(e.target.value)}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                label="City"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              />  
+            
+               <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                label="State"
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+              />
+               <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                label="Zipcode"
+                value={zipcode}
+                onChange={(e) => setZipCode(e.target.value)}
               />
               <TextField
                 variant="outlined"

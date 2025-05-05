@@ -10,7 +10,7 @@ signupRouter.use(bodyParser.json());
 
 signupRouter.post('/api/register', async (req, res) => {
     try {
-        const { firstName,lastName, email, password,phoneNumber,role,currentAddress,annualIncome } = req.body;
+        const { firstName,lastName, email, password,phoneNumber,role,street,city,state,zipCode } = req.body;
 
         // Check if user with the same email already exists
         const existingUser = await User.findOne({ email });
@@ -20,7 +20,7 @@ signupRouter.post('/api/register', async (req, res) => {
 
 
         // Create a new user
-        const newUser = new User({ firstName,lastName, email, password,phoneNumber,role,currentAddress,annualIncome });
+        const newUser = new User({ firstName,lastName, email, password,phoneNumber,role,street,city,state,zipCode });
         await newUser.save();
         res.status(201).json({ message: "User signed up successfully" });
     } catch (error) {
@@ -31,7 +31,7 @@ signupRouter.post('/api/register', async (req, res) => {
 
 signupRouter.post('/api/owner/register', async (req, res) => {
     try {
-        const { firstName,lastName, email, password,phoneNumber,role,currentAddress,approved } = req.body;
+        const { firstName,lastName, email, password,phoneNumber,role,street,city,state,zipCode,approved } = req.body;
 
         // Check if user with the same email already exists
         const existingUser = await Owner.findOne({ email });
@@ -41,7 +41,7 @@ signupRouter.post('/api/owner/register', async (req, res) => {
 
 
         // Create a new user
-        const newOwner = new Owner({ firstName,lastName, email, password,phoneNumber,role,currentAddress,approved });
+        const newOwner = new Owner({ firstName,lastName, email, password,phoneNumber,role,street,city,state,zipCode,approved });
         await newOwner.save();
         res.status(201).json({ message: "Owner signed up successfully,Approval pending from admin" });
     } catch (error) {

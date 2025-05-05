@@ -28,8 +28,8 @@ statusRouter.get('/api/getStatusByOwner/:ownerId', async (req, res) => {
         }
 
         const leaseInfoData = await leaseInfo.find({ apartmentDetails: { $in: apartmentIds } })
-            .populate('User', 'firstName lastName email phoneNumber annualIncome')
-            .select('apartmentDetails User');
+        .populate('User', 'firstName lastName email phoneNumber annualIncome');
+    
 
         const result = statusData.map(status => {
             const lease = leaseInfoData.find(lease => lease.apartmentDetails.toString() === status.apartmentDetails._id.toString());
@@ -40,7 +40,12 @@ statusRouter.get('/api/getStatusByOwner/:ownerId', async (req, res) => {
                 userName: lease ? `${lease.User.firstName} ${lease.User.lastName}` : null,
                 email: lease?.User?.email ?? null,
                 phoneNumber: lease?.User?.phoneNumber ?? null,
-                income: lease?.User?.annualIncome ?? null
+                income: lease?.income,
+                ssn: lease?.ssn,
+                companyName: lease?.companyName,    
+                officeNumber: lease?.officeNumber,
+                yearsOfExperience: lease?.yearsOfExperience,    
+                position: lease?.position,
             };
         });
 

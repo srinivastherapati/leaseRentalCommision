@@ -16,6 +16,35 @@ const leaseInfoSchema = new Schema({
     status:{
         type:String
     },
+    ssn:{
+        type:String,
+        required:true
+    },
+    companyName:{
+        type:String,
+        required:true
+        
+    },
+    yearsOfExperience:{
+        type:Number,
+        required:true
+        
+    },
+    officeNumber:{
+        type:String,
+        required:true
+        
+    },
+    income:{
+        type:Number,
+        required:true
+        
+    },
+    position:{
+        type:String,
+        required:true
+        
+    },
     members:{
         type:[String]
     }

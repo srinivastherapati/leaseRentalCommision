@@ -26,7 +26,19 @@ const OwnerSchema = new Schema({
     type: String,
     default: "owner"
   },
-  currentAddress: {
+  street: {
+    type: String,
+    required: true
+  },
+  city: {
+    type: String,
+    required: true
+  },
+  state: {
+    type: String,
+    required: true
+  },
+  zipCode: {
     type: String,
     required: true
   },

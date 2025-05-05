@@ -42,20 +42,28 @@ const filterBoxStyle = {
     const [filterDate, setFilterDate] = React.useState(null)
     const [filterType, setFilterType] = React.useState(null)
 
-    const updateFilter = (date, type)=>{
-        const filteredData = dataCopy.filter(item => {
-            const itemDate = new Date(item['availableFrom']).getTime();
-            const filterDateTime = new Date(date).getTime();
-            return itemDate >= filterDateTime && item['bedrooms'] === type;
-        });
-        setData(filteredData);
-        setFilterDate(date);
-        setFilterType(type);
-    }
+    const updateFilter = async (date, type) => {
+        try {
+            const response = await fetchAvailableApartments(date); // pass only date for now
+            let filtered = response;
+    
+            // If type filtering is needed client-side
+            if (type) {
+                filtered = response.filter(item => item['bedrooms'] === type);
+            }
+    
+            setData(filtered);
+            setFilterDate(date);
+            setFilterType(type);
+        } catch (error) {
+            console.error("Error fetching filtered data:", error);
+        }
+    };
+    
 
     return (
         <div className="dflex ai-stretch">
-            <Sidebar userName="Chakradhar"/>
+            <Sidebar userName={localStorage.getItem("fullName")}/>
             <div style={ styles.mainContent}>
                 <FilterBox updateFilter={updateFilter}  style={filterBoxStyle}/>
                 <LeaseOptions date={filterDate} type={filterType} fromPage={"Home"} arr={data}/>

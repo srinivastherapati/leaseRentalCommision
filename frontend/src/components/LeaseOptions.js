@@ -158,8 +158,6 @@ function ApartmentDialog({ open, onClose, onSave, apartment, mode }) {
         'pricePerMonth': '',
         'description': '',
         'address': '',
-        'ownerName': '',
-        'ownerContact': '',
         'amenities': '',
         'images': '',
         'availableFrom' : ''
@@ -177,8 +175,6 @@ function ApartmentDialog({ open, onClose, onSave, apartment, mode }) {
                 'description': apartment['description'] || '',
                 'address': '',
                 'availableFrom' : apartment['availableFrom'],
-                'ownerName': apartment['ownerName'] || '',
-                'ownerContact': apartment['ownerContact'] || '',
                 'amenities': apartment['amenities'] ? apartment['amenities'].join(', ') : '', // Assuming amenities is an array
                 'images': apartment['images'] ? apartment['images'].join(', ') : '' // Assuming images is an array
             });
@@ -193,8 +189,6 @@ function ApartmentDialog({ open, onClose, onSave, apartment, mode }) {
                 'description': '',
                 'address': '',
                 'availableFrom' : '',
-                'ownerName': '',
-                'ownerContact': '',
                 'amenities': '',
                 'images': ''
             });

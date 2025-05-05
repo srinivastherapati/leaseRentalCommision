@@ -8,9 +8,11 @@ apartmentDetailsRouter.use(bodyParser.json());
 apartmentDetailsRouter.get('/api/apartmentDetails/:id',async (req,res)=>{
     const {id}=req.params;
     try{
-        const apartment= await apartmentDetails.findOne({
-            _id : id
-        });
+        const apartment = await apartmentDetails.findOne({ _id: id })
+            .populate({
+                path: 'ownerId',
+                select: 'ownerName ownerContact'
+            });
         if(!apartment){
             return res.status(404).json({message:'apartment not found with given details'})
         }
@@ -21,6 +23,9 @@ apartmentDetailsRouter.get('/api/apartmentDetails/:id',async (req,res)=>{
         res.status(500).json({message:'Internal server error'});
     }
 });
+
+
+
 
 apartmentDetailsRouter.get('/api/owner/apartmentDetails/:ownerId', async (req, res) => {
     const { ownerId } = req.params;
@@ -68,8 +73,6 @@ apartmentDetailsRouter.post('/api/createApartment', async (req, res) => {
             bathrooms,
             pricePerMonth,
             description,
-            ownerName,
-            ownerContact
         } = req.body;
 
         // Create a new apartment
@@ -87,8 +90,6 @@ apartmentDetailsRouter.post('/api/createApartment', async (req, res) => {
             bathrooms,
             pricePerMonth,
             description,
-            ownerName,
-            ownerContact
         });
 
         // Save the new apartment to the database
@@ -125,8 +126,8 @@ apartmentDetailsRouter.put('/api/updateApartment/:apartmentId', async (req, res)
             bathrooms,
             pricePerMonth,
             description,
-            ownerName,
-            ownerContact
+            // ownerName,
+            // ownerContact
         } = req.body;
 
         // Update apartment fields
@@ -142,8 +143,8 @@ apartmentDetailsRouter.put('/api/updateApartment/:apartmentId', async (req, res)
         if (bathrooms) existingApartment.bathrooms = bathrooms;
         if (pricePerMonth) existingApartment.pricePerMonth = pricePerMonth;
         if (description) existingApartment.description = description;
-        if (ownerName) existingApartment.ownerName = ownerName;
-        if (ownerContact) existingApartment.ownerContact = ownerContact;
+        // if (ownerName) existingApartment.ownerName = ownerName;
+        // if (ownerContact) existingApartment.ownerContact = ownerContact;
         
 
         // Save the updated apartment

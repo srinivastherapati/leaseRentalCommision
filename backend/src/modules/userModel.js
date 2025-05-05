@@ -28,14 +28,22 @@ const UserSchema = new Schema({
         type: String,
         default:"customer"
     },
-    currentAddress:{
+   street:{
         type:String,
         required:true
     },
-    annualIncome:{
-        type:Number,
+    city:{
+        type:String,
         required:true
-    }
+    },
+    state:{
+        type:String,
+        required:true
+    },
+    zipCode:{
+        type:String,
+        required:true
+    },
 });
 
 const User = model('User', UserSchema);

@@ -66,14 +66,14 @@ const apartmentDetailsSchema= new Schema({
         type: String,
         default: ''
     },
-    ownerName: {
-        type: String,
-        default: ''
-    },
-    ownerContact: {
-        type: String,
-        default: ''
-    },
+    // ownerName: {
+    //     type: String,
+    //     default: ''
+    // },
+    // ownerContact: {
+    //     type: String,
+    //     default: ''
+    // },
     isBooked:{
         type:Boolean,
         default: false

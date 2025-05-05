@@ -29,7 +29,13 @@ function UpdateStatus() {
       name: updatedData[index].userName,
       email: updatedData[index].email,
       phone: updatedData[index].phoneNumber,
-      income: updatedData[index].income
+      income: updatedData[index].income,
+      ssn: updatedData[index].ssn,
+      companyName: updatedData[index].companyName,
+      officeNumber: updatedData[index].officeNumber,
+      yearsOfExperience: updatedData[index].yearsOfExperience,
+      position: updatedData[index].position,
+      
     };
     setSelectedUser(record);
     setOpenDialog(true);
@@ -105,6 +111,11 @@ function UpdateStatus() {
                   <p><strong>Name:</strong> {selectedUser.name}</p>
                   <p><strong>Email:</strong> {selectedUser.email}</p>
                   <p><strong>Phone:</strong> {selectedUser.phone}</p>
+                  <p><strong>SSN:</strong> {selectedUser.ssn}</p>
+                  <p><strong>CompanyName:</strong> {selectedUser.companyName}</p>
+                  <p><strong>OfficeNumber:</strong> {selectedUser.officeNumber}</p>
+                  <p><strong>YearsOfExperience:</strong> {selectedUser.yearsOfExperience}</p>
+                  <p><strong>Position:</strong> {selectedUser.position}</p>
                   <p><strong>Income:</strong> {selectedUser.income}</p>
                 </div>
               )}

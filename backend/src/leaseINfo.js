@@ -261,7 +261,7 @@ leaseInfoRouter.get('/api/getStatus/:userId', async (req, res) => {
 
 leaseInfoRouter.post('/api/applyLease/:userId', async (req, res) => {
     const userId = req.params.userId;
-    const { apartmentDetailsId, members } = req.body;
+    const { apartmentDetailsId, members,ssn,companyName,position,income,officeNumber,yearsOfExperience } = req.body;
 
     try {
         const lease = await leaseInfo.findOne({ User: userId, });
@@ -285,7 +285,14 @@ leaseInfoRouter.post('/api/applyLease/:userId', async (req, res) => {
             apartmentDetails: apartmentDetailsId,
             User: userId,
             status: 'Active', 
-            members: members || [] // If members exist, assign them, otherwise assign an empty array
+            members: members || [], // If members exist, assign them, otherwise assign an empty array
+            ssn,
+            companyName,
+            position,
+            income,
+            officeNumber,
+            yearsOfExperience
+        
         });
 
         if (apartmentData) {
@@ -311,7 +318,8 @@ leaseInfoRouter.post('/api/applyLease/:userId', async (req, res) => {
             { amount: 100, description: 'Application Fee' },
             { amount: 500, description: 'Advance Fee' },
             { amount : 120, description : 'Utility Fee'},
-            { amount : 250, description : 'Water and Electricity Fee'}
+            
+            { amount : 500, description : 'Deposit'}
         ];
         const currentDate=new Date();
         for (const fee of fees) {
